@@ -1,0 +1,8 @@
+{
+  "name": "angular-through-directives",
+  "description": "Learning Angular Through Directives",
+  "dependencies": {
+    "express": "^4.8.5",
+    "body-parser": "^1.6.5"
+  }
+}
