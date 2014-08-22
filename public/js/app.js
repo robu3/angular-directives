@@ -38,7 +38,7 @@ app.directive("myRepeater", function () {
 				// Our linker function will be very basic, simply iterating over the variable
 				// named by `collectionName` in our current scope, "killing and refilling" all
 				// elements every time the collection changes.
-				return function ($scope, $transclude) {
+				return function ($scope, iElement, iAttrs, controller, transclude) {
 					$scope.$watchCollection(collectionName, function (collection) {
 						var i;
 							
@@ -59,7 +59,7 @@ app.directive("myRepeater", function () {
 								var itemScope = $scope.$new();
 								itemScope[itemName] = collection[i];
 
-								linker(itemScope, function (clone) {
+								transclude(itemScope, function (clone) {
 									parent.append(clone);
 									var block = {};
 									block.el = clone;
