@@ -16,7 +16,7 @@ app.directive("myRepeater", function () {
 
 		// The compile function is where the magic happens, as they say.
 		// This is where we use the provided expression and the scope to
-		// build the resulting HTML.
+		// build the resulting DOM elements.
 		compile: function myRepeaterCompile($element, $attr, linker) {
 			// $attr will contain the attribute information for the element.
 			// It will have a property for our directive, using its name: myRepeater
@@ -97,16 +97,16 @@ app.factory("Character", function ($resource) {
 
 app.controller("myController", function ($scope, Character) {
 	// Load list of all characters from the server
-	// I personally am not a big fan of the promise syntax, since it abstracts away
+	// The promise syntax can be a bit magical and "hand-wavery", since it abstracts away
 	// the asynchronous nature of what's actually happening. Let's write to the console
 	// here to illustrate what's happening.
 	//
 	// Note that `characters` will be assigned to when the data is returned.
-	Character.query(function (data) {
+	var characters = Character.query(function (data) {
 		console.log("Data retrieved from server: ", data);	
 		$scope.characters = data;
 	});
 
-	// Exposing $scope to the console so we can play!
+	// Exposing $scope to the console so we can play with it!
 	window.$scope = $scope;
 });
